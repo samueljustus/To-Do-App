@@ -8,6 +8,8 @@
 
 body {
     font-family: 'Josefin Sans', sans-serif;
+    /* background-color: black; */
+
 }
 
 .bg-image {
@@ -21,6 +23,7 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+
 
 .hero {
     color: hsl(0, 0%, 98%);
@@ -63,4 +66,65 @@ body {
 input[placeholder] {
     padding-left: 3em;
     font-family: inherit;
+}
+
+.todo {
+    width: 100%;
+    background-color: hsl(0, 0%, 98%);
+    margin-top: 1em;
+    border-radius: 5px;
+}
+
+.todo-item {
+    position: relative;
+    padding: .8em 0em 1.4em;
+    width: 100%;
+    border-bottom: 1px solid hsl(236, 33%, 92%);
+}
+
+.check {
+    position: relative;
+    left: 1em;
+    top: 1em;
+}
+
+.radio {
+    display: inline-block;
+    width: 20px;
+    height:20px;
+    border-radius: 50px;
+    position: absolute;
+    border: 1px solid hsl(236, 33%, 92%);
+    top: 1.65em;
+}
+
+.todo-text {
+    padding-left: 3em;
+    font-size: .8em;
+}
+
+.cross {
+    position: absolute;
+    right: 0.5em;
+    top: 1.8em;
+    width: 13px;
+}
+
+.item-clear {
+    padding: 1em 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: hsl(0, 0%, 98%);
+}
+
+.items-left {
+    color: hsl(236, 9%, 61%);
+    font-size: .8em;
+}
+
+.clear {
+    border: none;
+    color: hsl(236, 9%, 61%);
+    background-color: none;
 }
