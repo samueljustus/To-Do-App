@@ -14,15 +14,15 @@
         </div>
    </header> 
    <div class="container">
-    <form action="#">
+    <form class="form" action="#">
         <span class="circle"></span>
         <input type="text" class="create-todo" placeholder="Create a new todo...">
     </form>
     <div class="todo">
-        <div class="todo-item">
+        <!-- <div class="todo-item">
             <img src="img/icon-check.svg" alt="a check icon" class="check">
-            <span class="radio"></span>
-            <p class="todo-text">complete online javascript course</p>
+            <span class="radio radio_checked"></span>
+            <p class="todo-text strike-through">complete online javascript course</p>
             <img src="img/icon-cross.svg" alt="cross icon" class="cross">
         </div>
         <div class="todo-item">
@@ -54,19 +54,20 @@
             <span class="radio"></span>
             <p class="todo-text">complete online javascript course</p>
             <img src="img/icon-cross.svg" alt="cross icon" class="cross">
-        </div>
+        </div> -->
     </div>
     <div class="item-clear">
-        <p class="items-left"><span class="number">5</span> items left</p>
-        <button class="clear">Clear Completed</button>
+        <p class="items-left"><span class="number"></span> items left</p>
+        <a href="#" class="clear">Clear Completed</a>
     </div>
     <div class="modifier">
         <div class="show">
-            <button>All</button>
-            <button>Active</button>
-            <button>Completed</button>
+            <a href="#" class="btn btn_blue">All</a>
+            <a href="#" class="btn">Active</a>
+            <a href="#" class="btn">Completed</a>
         </div>
     </div>
    </div>
+   <script src="app.js"></script>
 </body>
 </html>

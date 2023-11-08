@@ -8,8 +8,7 @@
 
 body {
     font-family: 'Josefin Sans', sans-serif;
-    /* background-color: black; */
-
+    background-color: hsl(0, 0%, 98%);
 }
 
 .bg-image {
@@ -70,7 +69,7 @@ input[placeholder] {
 
 .todo {
     width: 100%;
-    background-color: hsl(0, 0%, 98%);
+    background-color: #ffff;
     margin-top: 1em;
     border-radius: 5px;
 }
@@ -86,6 +85,7 @@ input[placeholder] {
     position: relative;
     left: 1em;
     top: 1em;
+    z-index: 1
 }
 
 .radio {
@@ -98,9 +98,18 @@ input[placeholder] {
     top: 1.65em;
 }
 
+.radio_checked {
+    background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+
 .todo-text {
     padding-left: 3em;
     font-size: .8em;
+}
+
+.strike-through {
+    text-decoration:line-through;
+    color: hsl(236, 9%, 61%);
 }
 
 .cross {
@@ -115,7 +124,7 @@ input[placeholder] {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: hsl(0, 0%, 98%);
+    background-color: #ffff;
 }
 
 .items-left {
@@ -127,4 +136,36 @@ input[placeholder] {
     border: none;
     color: hsl(236, 9%, 61%);
     background-color: none;
+    font-family: inherit;
+    text-decoration:none;
+    font-size: .8em;
+}
+
+
+.modifier {
+    background-color: #ffff;
+    margin-top: 1em;
+    padding: .5em 0em .5em;
+}
+
+.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.btn {
+    display: block;
+    border: none;
+    color: hsl(236, 9%, 61%);
+    background-color: none;
+    font-family: inherit;
+    padding: 1em 0 1em;
+    text-decoration: none;
+    font-size: .9em;
+}
+
+.btn_blue {
+    color: hsl(220, 98%, 61%);
 }
