@@ -1,13 +1,18 @@
+window.addEventListener('load', () => {
 const form = document.querySelector('.form') 
 const input = document.querySelector('input')
 const toDo = document.querySelector('.todo')
 const numberOfToDo = document.querySelector('.number')
+const clearCompleted = document.querySelector('.clear')
+const btnAll = document.querySelector('#all')
+const btnActive = document.querySelector('#active')
+const btnCompleted = document.querySelector('#completed')
 
 form.addEventListener('submit', (e) => {
     if (input.value === '') {
         e.preventDefault()
-    } else {
-    e.preventDefault()
+        return;
+    }
     const usersInput = input.value;
 
     const todoItem = document.createElement('div')
@@ -20,6 +25,7 @@ form.addEventListener('submit', (e) => {
     image.addEventListener('click', () => {
         radioItem.classList.toggle('radio_checked')
         todoText.classList.toggle('strike-through')
+        storeToLocalStorage()
     }) 
 
     const radioItem = document.createElement('span')
@@ -35,6 +41,8 @@ form.addEventListener('submit', (e) => {
 
     image2.addEventListener('click', () => {
         todoItem.remove()
+        storeToLocalStorage()
+        
     })
 
     todoItem.appendChild(image)
@@ -42,12 +50,33 @@ form.addEventListener('submit', (e) => {
     todoItem.appendChild(todoText)
     todoItem.appendChild(image2)
     toDo.appendChild(todoItem)
-    input.value = '' 
-    
-} 
+    input.value = ''
+    storeToLocalStorage()
 
+    function clear() {
+        if (todoText.classList.contains('strike-through') === true) {
+            todoItem.remove()
+            storeToLocalStorage()
+        }
+    }
+    
+    clearCompleted.addEventListener('click', clear)
+    btnActive.addEventListener('click', clear)
+
+    
 })
 
+function storeToLocalStorage() {
+    localStorage.setItem('task', toDo.innerHTML)
+}
+
+function display() {
+    toDo.innerHTML = localStorage.getItem('task')
+}
+display() 
+
+
+})
 
 
 
