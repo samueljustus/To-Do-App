@@ -1,87 +1,77 @@
-window.addEventListener('load', () => {
-const form = document.querySelector('.form') 
-const input = document.querySelector('input')
-const toDo = document.querySelector('.todo')
-const numberOfToDo = document.querySelector('.number')
-const clearCompleted = document.querySelector('.clear')
-const btnAll = document.querySelector('#all')
-const btnActive = document.querySelector('#active')
-const btnCompleted = document.querySelector('#completed')
+const form = document.querySelector('.form')
+const input = document.querySelector('.create-todo')
+const todoContainer = document.querySelector('.todo')
+const itemsLeft = document.querySelector('.number')
+
+const todoArray = JSON.parse(localStorage.getItem('task')) || []
+
+if (localStorage.getItem('task')){
+    todoArray.map((task) => {
+        createTask(task)
+    })
+}
 
 form.addEventListener('submit', (e) => {
-    if (input.value === '') {
-        e.preventDefault()
+    e.preventDefault()
+    const inputValue = input.value;
+    
+    if (inputValue === '') {
         return;
     }
-    const usersInput = input.value;
+    
+    const task = {
+        id: new Date().getTime(),
+        name: inputValue,
+        isCompleted: false
+    }
 
-    const todoItem = document.createElement('div')
-    todoItem.classList.add('todo-item')
+    todoArray.push(task)
+    localStorage.setItem('task', JSON.stringify(todoArray))
 
-    const image = document.createElement('img')
-    image.classList.add('check')
-    image.src = 'img/icon-check.svg'
+    createTask(task)
+    countArray()
+    form.reset()
+    input.focus()
+}) 
 
-    image.addEventListener('click', () => {
-        radioItem.classList.toggle('radio_checked')
-        todoText.classList.toggle('strike-through')
-        storeToLocalStorage()
-    }) 
+function createTask(task) {
+    const taskEl = document.createElement('li')
+    taskEl.classList.add('todo-item')
+    // taskEl.setAttribute('id', task.id)
 
-    const radioItem = document.createElement('span')
-    radioItem.classList.add('radio')
+    const checkImg = document.createElement('img')
+    checkImg.classList.add('check')
+    checkImg.src = 'img/icon-check.svg'
+    
+    const radio = document.createElement('span')
+    radio.classList.add('radio')
 
     const todoText = document.createElement('p')
     todoText.classList.add('todo-text')
-    todoText.innerText = usersInput
+    todoText.innerText = task.name
 
-    const image2 = document.createElement('img')
-    image2.classList.add('cross')
-    image2.src = 'img/icon-cross.svg'
+    const crossImg = document.createElement('img')
+    crossImg.classList.add('cross')
+    crossImg.src = 'img/icon-cross.svg'
 
-    image2.addEventListener('click', () => {
-        todoItem.remove()
-        storeToLocalStorage()
-        
+
+    
+    if (task.isCompleted) {
+        taskEl.classList.add('complete')
+        radio.classList.add('radio_checked')
+        todoText.classList.add('strike-through')
+    }
+
+    taskEl.append(checkImg, radio, todoText, crossImg)
+    todoContainer.append(taskEl)
+ }
+
+function countArray() {
+    const filteredArray = todoArray.filter((task) => {
+        (task.isCompleted)
     })
 
-    todoItem.appendChild(image)
-    todoItem.appendChild(radioItem)
-    todoItem.appendChild(todoText)
-    todoItem.appendChild(image2)
-    toDo.appendChild(todoItem)
-    input.value = ''
-    storeToLocalStorage()
-
-    function clear() {
-        if (todoText.classList.contains('strike-through') === true) {
-            todoItem.remove()
-            storeToLocalStorage()
-        }
-    }
-    
-    clearCompleted.addEventListener('click', clear)
-    btnActive.addEventListener('click', clear)
-
-    
-})
-
-function storeToLocalStorage() {
-    localStorage.setItem('task', toDo.innerHTML)
+    console.log(filteredArray.length)
 }
-
-function display() {
-    toDo.innerHTML = localStorage.getItem('task')
-}
-display() 
-
-
-})
-
-
-
-
-
-
 
 

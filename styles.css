@@ -68,6 +68,7 @@ input[placeholder] {
 }
 
 .todo {
+    list-style: none;
     width: 100%;
     background-color: #ffff;
     margin-top: 1em;
@@ -96,6 +97,7 @@ input[placeholder] {
     position: absolute;
     border: 1px solid hsl(236, 33%, 92%);
     top: 1.65em;
+    cursor: pointer;
 }
 
 .radio_checked {
