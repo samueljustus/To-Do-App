@@ -67,15 +67,14 @@ form.addEventListener('submit', (e) => {
 
 todoContainer.addEventListener('click', (e) => {
     if (e.target.classList.contains('cross')) {
-        const taskId = e.target.closest('li').id
+        const taskId = parseInt(e.target.closest('li').id)
         removeFromArray(taskId)
     }
 })
 
 function removeFromArray(taskId) {
-    const newTodoArray = todoArray.filter((task) =>{
-        return task.id !== taskId
-    })
+    const newTodoArray = todoArray.filter((task) => task.id !== taskId)
+    console.log(newTodoArray)
     localStorage.setItem('task', JSON.stringify(newTodoArray))
     document.getElementById(taskId).remove()
 }
