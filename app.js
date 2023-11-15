@@ -7,7 +7,7 @@ const todoArray = JSON.parse(localStorage.getItem('task')) || []
 
 if (localStorage.getItem('task')){
     todoArray.map((task) => {
-        createTask(task)
+        displayTask(task)
     })
 }
 
@@ -29,12 +29,12 @@ form.addEventListener('submit', (e) => {
     todoArray.push(task)
     localStorage.setItem('task', JSON.stringify(todoArray))
 
-    createTask(task)
+    displayTask(task)
     form.reset()
     input.focus()
 })
     
-    function createTask(task) {
+    function displayTask(task) {
         const taskEl = document.createElement('li')
         taskEl.classList.add('todo-item')
         taskEl.setAttribute('id', task.id)
