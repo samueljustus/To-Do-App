@@ -20,9 +20,10 @@ form.addEventListener('submit', (e) => {
     }
     
     const task = {
-        id: new Date().getTime(),
+        id: Date.now(),
         name: inputValue,
-        isCompleted: false
+        isCompleted: false,
+        delete: false
     }
 
     todoArray.push(task)
@@ -31,21 +32,7 @@ form.addEventListener('submit', (e) => {
     createTask(task)
     form.reset()
     input.focus()
-    countItemsLeft()
-
-    // countArray()
-}) 
-
-
-
-    function removeTask(taskId) {
-        const newTodoArray = todoArray.filter(() => {
-            task.id !== taskId
-        })
-        localStorage.setItem('task', JSON.stringify(newTodoArray))
-        document.getElementById(taskId).remove()
-        countItemsLeft()
-    }
+})
     
     function createTask(task) {
         const taskEl = document.createElement('li')
@@ -67,16 +54,6 @@ form.addEventListener('submit', (e) => {
         crossImg.classList.add('cross')
         crossImg.src = 'img/icon-cross.svg'
         
-
-        
-        crossImg.addEventListener('click', (e) => {
-            // if (e.target.classList.contains('cross')) {
-            //     const taskId = e.target.closest('li').id
-            //     removeTask(taskId)
-            // }
-        
-            console.log('clicked')
-        })
         
         if (task.isCompleted) {
             taskEl.classList.add('complete')
@@ -88,21 +65,17 @@ form.addEventListener('submit', (e) => {
     todoContainer.append(taskEl)
 }
 
-function countItemsLeft() {
-    const itemsLeftAarray = todoArray.filter((task) => {
-        task.isCompleted === false;
+todoContainer.addEventListener('click', (e) => {
+    if (e.target.classList.contains('cross')) {
+        const taskId = e.target.closest('li').id
+        removeFromArray(taskId)
+    }
+})
+
+function removeFromArray(taskId) {
+    const newTodoArray = todoArray.filter((task) =>{
+        return task.id !== taskId
     })
-    
-    itemsLeft.textContent = todoArray.length  
-    localStorage.setItem('task', JSON.stringify(todoArray))
-    
+    localStorage.setItem('task', JSON.stringify(newTodoArray))
+    document.getElementById(taskId).remove()
 }
-
-
-
-
-// ABANDONED FOR NOW
-
-// MI O FI E LE O  
-
-
