@@ -7,10 +7,12 @@
     <title>To Do App</title>
 </head>
 <body>
-   <header class="bg-image">
+   <header class="bg-image bg-image_dark">   
         <div class="header">
             <h1 class="hero">todo</h1>
-            <img src="img/icon-moon.svg" alt="an half moon icon">
+            <button class="theme-switcher">
+                <img src="img/icon-moon.svg" alt="an half moon icon" class="moon-img">
+            </button>
         </div>
    </header> 
    <div class="container">
@@ -21,54 +23,30 @@
     </form>
     <ul class="todo">
         <!-- <li class="todo-item">
-            <img src="img/icon-check.svg" alt="a check icon" class="check">
-            <span class="radio radio_checked"></span>
-            <p class="todo-text strike-through">complete online javascript course</p>
-            <img src="img/icon-cross.svg" alt="cross icon" class="cross">
-        </li>
-        <li class="todo-item">
-            <img src="img/icon-check.svg" alt="a check icon" class="check">
-            <span class="radio"></span>
-            <p class="todo-text">complete online javascript course</p>
-            <img src="img/icon-cross.svg" alt="cross icon" class="cross">
-        </li>
-        <li class="todo-item">
-            <img src="img/icon-check.svg" alt="a check icon" class="check">
-            <span class="radio"></span>
-            <p class="todo-text">complete online javascript course</p>
-            <img src="img/icon-cross.svg" alt="cross icon" class="cross">
-        </li>
-        <div class="todo-item">
-            <img src="img/icon-check.svg" alt="a check icon" class="check">
-            <span class="radio"></span>
-            <p class="todo-text">complete online javascript course</p>
-            <img src="img/icon-cross.svg" alt="cross icon" class="cross">
-        </div>
-        <div class="todo-item">
-            <img src="img/icon-check.svg" alt="a check icon" class="check">
-            <span class="radio"></span>
-            <p class="todo-text">complete online javascript course</p>
-            <img src="img/icon-cross.svg" alt="cross icon" class="cross">
-        </div>
-        <div class="todo-item">
-            <img src="img/icon-check.svg" alt="a check icon" class="check">
-            <span class="radio"></span>
-            <p class="todo-text">complete online javascript course</p>
-            <img src="img/icon-cross.svg" alt="cross icon" class="cross">
-        </div> -->
+            <div class="check-container">
+                <input type="checkbox" class="check-box">
+                <span class="check"></span>
+            </div>
+            <p class="todo-text strike-through">mastering javascript</p>
+            <img src="img/icon-cross.svg" alt="" class="cross">
+        </li> -->
     </ul>
     <div class="item-clear">
         <p class="items-left"><span class="number"></span> items left</p>
-        <a href="#" class="clear">Clear Completed</a>
+        <button href="#" class="clear">Clear Completed</button>
     </div>
     <div class="modifier">
         <div class="show">
-            <a href="#" id="all" class="btn btn_blue">All</a>
-            <a href="#" id="active" class="btn">Active</a>
-            <a href="#" id="completed" class="btn">Completed</a>
+            <button href="#" id="all" class="btn btn_blue">All</button>
+            <button href="#" id="active" class="btn">Active</button>
+            <button href="#" id="completed" class="btn">Completed</button>
         </div>
     </div>
+    <footer>
+        <p class="drag">Drag and drop to reorder list</p>
+       </footer>
    </div>
+  
    <script src="app.js"></script>
 </body>
 </html>

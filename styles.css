@@ -31,6 +31,13 @@ body {
     font-size: 1.4em;
 }
 
+
+.theme-switcher {
+    appearance: none;
+    background: none;
+    border: none;
+
+}
 .container {
     padding: 0em 2em;
     position: absolute; 
@@ -76,36 +83,57 @@ input[placeholder] {
 }
 
 .todo-item {
-    position: relative;
-    padding: .8em 0em 1.4em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+    width:100%;
+    /* position: relative; */
+    padding: 1rem 1rem;
     width: 100%;
     border-bottom: 1px solid hsl(236, 33%, 92%);
 }
 
-.check {
+.check-container {
+    min-width: 20px;
+    height: 20px;
+    border-radius: 100%; 
+    border: 1px solid hsl(233, 14%, 35%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
-    left: 1em;
-    top: 1em;
-    z-index: 1
 }
 
-.radio {
-    display: inline-block;
-    width: 20px;
-    height:20px;
-    border-radius: 50px;
+
+.check-container .check-box {
+    transform: scale(1.7); 
+    opacity: 0; 
+}
+
+ .check {
+    transform: scale(1.6);
     position: absolute;
-    border: 1px solid hsl(236, 33%, 92%);
-    top: 1.65em;
-    cursor: pointer;
+    left: .21em;
+    top: .25em;
+    bottom: 0em;
+    right: 0em;
+    width: 12px;
+    height: 12px;
+    pointer-events: none;
+    border-radius: inherit;
+} 
+
+.check-container .check-box:checked + .check {
+    background-image : url('img/icon-check.svg'), linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-.radio_checked {
-    background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
-}
+
 
 .todo-text {
-    padding-left: 3em;
+    width: 100%;
     font-size: .8em;
 }
 
@@ -114,12 +142,12 @@ input[placeholder] {
     color: hsl(236, 9%, 61%);
 }
 
-.cross {
+/* .cross {
     position: absolute;
     right: 0.5em;
     top: 1.8em;
     width: 13px;
-}
+} */
 
 .item-clear {
     padding: 1em 1em;
@@ -138,6 +166,7 @@ input[placeholder] {
     border: none;
     color: hsl(236, 9%, 61%);
     background-color: none;
+    background: none;
     font-family: inherit;
     text-decoration:none;
     font-size: .8em;
@@ -158,6 +187,7 @@ input[placeholder] {
 }
 
 .btn {
+    background: none;
     display: block;
     border: none;
     color: hsl(236, 9%, 61%);
@@ -166,8 +196,78 @@ input[placeholder] {
     padding: 1em 0 1em;
     text-decoration: none;
     font-size: .9em;
+    cursor: pointer;
 }
 
 .btn_blue {
     color: hsl(220, 98%, 61%);
+}
+
+footer {
+    margin-top: 3em;
+}
+
+.drag {
+    text-align: center;
+    color: hsl(236, 9%, 61%);
+    font-size: .8em;
+}
+
+
+/* Dark mode */
+
+
+ .body_dark {
+    background-color: hsl(235, 21%, 11%);
+}
+
+.bg-image_dark {
+    background-image: url(img/bg-mobile-dark.jpg);
+    background-repeat: no-repeat;
+
+}
+
+.container_dark .create-todo {
+    background-color: hsl(235, 24%, 19%);
+    color: hsl(234, 39%, 85%);
+}
+
+.container_dark .todo {
+    background-color: hsl(235, 24%, 19%);
+}
+
+.container_dark .todo-item {
+    border: 1px solid hsl(237, 14%, 26%);
+}
+
+.container_dark .radio {
+    border: 1px solid hsl(237, 14%, 26%);
+}
+
+.todo-dark .todo-text {
+    color: hsl(234, 39%, 85%);
+}
+
+.item-clear_dark {
+    background-color: hsl(235, 24%, 19%);
+}
+
+.item-clear_dark > * {
+    color: hsl(234, 11%, 52%)
+}
+  
+.modifier-dark {
+    background-color: hsl(235, 24%, 19%); ;
+}
+
+.modifier-dark .active,
+.modifier-dark .active {
+    color: hsl(234, 11%, 52%);
+}
+
+
+/* media queries */
+
+@media for (min-width: 400px) {
+    
 }
