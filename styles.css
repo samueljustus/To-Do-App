@@ -268,6 +268,15 @@ footer {
 
 /* media queries */
 
-@media for (min-width: 400px) {
+@media (width >= 400px) {
+    .bg-image {
+        background-image: url(img/bg-desktop-light.jpg);
+        background-repeat: no-repeat; 
+    }
+
+    .bg-image_dark {
+        background-image: url(img/bg-desktop-dark.jpg);
+        background-repeat: no-repeat;
     
+    }
 }

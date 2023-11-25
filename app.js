@@ -6,6 +6,7 @@ const clearCompleted = document.querySelector('.clear')
 const btnAll = document.querySelector('#all')
 const btnActive = document.querySelector('#active')
 const btnCompleted = document.querySelector('#completed')
+const globalButton = document.querySelectorAll('.btn')
 const themeSwitcher = document.querySelector('.theme-switcher')
 const themeImg = document.querySelector('.moon-img')
 const body = document.querySelector('body')
@@ -13,25 +14,45 @@ const container = document.querySelector('.container')
 const itemClear = document.querySelector('.item-clear')
 const modifier = document.querySelector('.modifier')
 const headerPicture = document.querySelector('.bg-image')
+let darkMode = localStorage.getItem('dark-mode');
+
+
+
+function enableDarkMode(){
+    themeImg.src = 'img/icon-sun.svg'
+    body.classList.add('body_dark')
+    headerPicture.classList.add('bg-image_dark')
+    todoContainer.classList.add('todo-dark')
+    container.classList.add('container_dark')
+    itemClear.classList.add('item-clear_dark')
+    modifier.classList.add('modifier_dark')
+    localStorage.setItem('dark-mode', 'enabled')
+}
+
+function disableDarkMode(){
+    themeImg.src = 'img/icon-moon.svg'
+    body.classList.remove('body_dark')
+    headerPicture.classList.remove('bg-image_dark')
+    container.classList.remove('container_dark')
+    todoContainer.classList.remove('todo-dark')
+    itemClear.classList.remove('item-clear_dark')
+    modifier.classList.remove('modifier_dark')
+    localStorage.setItem('dark-mode','disabled')
+}
+
+
+
+if(darkMode === 'enabled'){
+    enableDarkMode()
+}
 
 themeSwitcher.addEventListener('click', () => {
-    if (themeImg.src.endsWith('icon-moon.svg')) {
-        themeImg.src = 'img/icon-sun.svg'
-        body.classList.add('body_dark')
-        headerPicture.classList.add('bg-image_dark')
-        todoContainer.classList.add('todo-dark')
-        container.classList.add('container_dark')
-        itemClear.classList.add('item-clear_dark')
-        modifier.classList.add('modifier_dark')
-    } else {
-        themeImg.src = 'img/icon-moon.svg'
-        body.classList.remove('body_dark')
-        headerPicture.classList.remove('bg-image_dark')
-        container.classList.remove('container_dark')
-        todoContainer.classList.remove('todo-dark')
-        itemClear.classList.remove('item-clear_dark')
-        modifier.classList.remove('modifier_dark')
+    darkMode = localStorage.getItem('dark-mode')
+    if (darkMode === 'disabled') {
+        enableDarkMode()
 
+    } else {
+        disableDarkMode()
     }
 })
 
@@ -104,7 +125,17 @@ form.addEventListener('submit', (e) => {
                 const parent = checkBox.parentElement.parentElement
                 const checked = checkBox.checked
                 stateTodo([...document.querySelectorAll('.todo-item')].indexOf(parent), checked)
-                checked ? todoText.classList.add('strike-through') : todoText.classList.remove('strike-through')
+                if (checked) {
+                    todoText.classList.add('strike-through')
+                    parent.classList.add('completed')
+                } else {
+                    todoText.classList.remove('strike-through')
+                    parent.classList.remove('completed')
+
+                }
+                // checked 
+                // ? todoText.classList.add('strike-through')
+                // : todoText.classList.remove('strike-through')
 
             })
 
@@ -117,6 +148,8 @@ form.addEventListener('submit', (e) => {
             
             if (task.isCompleted) {
                 todoText.classList.add('strike-through')
+                checkBox.checked = true;
+                taskEl.classList.add('completed')
             }
         }
         
@@ -142,6 +175,43 @@ function CheckitemsLeft(todoArray) {
     itemsLeft.innerText = notCompleted.length
 }
 
+
+clearCompleted.addEventListener('click', () => {
+    todoArray = todoArray.filter((task) => task.isCompleted === false)
+    localStorage.setItem('task', JSON.stringify(todoArray))
+
+   document.querySelectorAll('.todo-item').forEach((task) => {
+    if (task.classList.contains('completed')) {
+        task.remove()
+    }
+   })
+})
+
+const allTaskEl = document.querySelectorAll('.todo-item')
+
+
+globalButton.forEach((btn) => {
+    if (btn.id === 'all') {
+        btn.addEventListener('click',() => {
+           Array.from(allTaskEl).map((task) => {
+            task.style.display = 'flex';
+           })
+        })
+    }
+
+    if (btn.id === 'active') {
+        btn.addEventListener('click', () => {
+            Array.from(allTaskEl).map((task) => {
+                task.classList.contains('completed') ? task.style.display = 'none' 
+                : task.style.display = 'flex'
+            })
+        })
+
+        if (btn.id === 'completed') {
+            
+        }
+    }
+})
 
 
 
