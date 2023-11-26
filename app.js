@@ -12,7 +12,7 @@ const themeImg = document.querySelector('.moon-img')
 const body = document.querySelector('body')
 const container = document.querySelector('.container')
 const itemClear = document.querySelector('.item-clear')
-const modifier = document.querySelector('.modifier')
+const show = document.querySelector('.show')
 const headerPicture = document.querySelector('.bg-image')
 let darkMode = localStorage.getItem('dark-mode');
 
@@ -25,7 +25,7 @@ function enableDarkMode(){
     todoContainer.classList.add('todo-dark')
     container.classList.add('container_dark')
     itemClear.classList.add('item-clear_dark')
-    modifier.classList.add('modifier_dark')
+    show.classList.add('show-dark')
     localStorage.setItem('dark-mode', 'enabled')
 }
 
@@ -36,7 +36,7 @@ function disableDarkMode(){
     container.classList.remove('container_dark')
     todoContainer.classList.remove('todo-dark')
     itemClear.classList.remove('item-clear_dark')
-    modifier.classList.remove('modifier_dark')
+    show.classList.remove('show-dark')
     localStorage.setItem('dark-mode','disabled')
 }
 
@@ -94,6 +94,7 @@ form.addEventListener('submit', (e) => {
         const taskEl = document.createElement('li')
         taskEl.classList.add('todo-item')
         taskEl.setAttribute('id', task.id)
+        taskEl.setAttribute('draggable', true)
         
             const checkContainer = document.createElement('div')
             checkContainer.classList.add('check-container')
@@ -177,6 +178,7 @@ function CheckitemsLeft(todoArray) {
 
 
 clearCompleted.addEventListener('click', () => {
+    console.log('click')
     todoArray = todoArray.filter((task) => task.isCompleted === false)
     localStorage.setItem('task', JSON.stringify(todoArray))
 
@@ -187,88 +189,43 @@ clearCompleted.addEventListener('click', () => {
    })
 })
 
-const allTaskEl = document.querySelectorAll('.todo-item')
+const allTaskEl = Array.from(document.querySelectorAll('.todo-item'))
 
 
 globalButton.forEach((btn) => {
     if (btn.id === 'all') {
-        btn.addEventListener('click',() => {
-           Array.from(allTaskEl).map((task) => {
-            task.style.display = 'flex';
-           })
+        btn.addEventListener('click', () => {
+            allTaskEl.map((task) => {
+                task.style.display = 'flex'
+            })
         })
     }
 
     if (btn.id === 'active') {
-        btn.addEventListener('click', () => {
-            Array.from(allTaskEl).map((task) => {
-                task.classList.contains('completed') ? task.style.display = 'none' 
-                : task.style.display = 'flex'
+         btn.addEventListener('click', () => {
+            allTaskEl.map((task) => {
+                task.classList.contains('completed') ? task.style.display = 'none' : task.style.display = 'flex'
             })
         })
-
-        if (btn.id === 'completed') {
-            
-        }
     }
+
+    if (btn.id === 'completed') {
+        btn.addEventListener('click', () => {
+           allTaskEl.map((task) => {
+               task.classList.contains('completed') === false ? task.style.display = 'none' : task.style.display = 'flex'
+           })
+       })
+   }
+
 })
+        
+     
 
 
 
 
 
 
-// function taskCompleted(taskId, element) {
-//     const task = todoArray.find((task) => task.id === parseInt(taskId))
-//     task.isCompleted = true;
-//     const parent = element.parentElement
-//     parent.classList.add('completed')
-//     const radio = element.nextElementSibling
-//     radio.classList.add('radio_checked')
-//     const todoText = radio.nextElementSibling
-//     todoText.classList.add('strike-through')
-   
-//     localStorage.setItem('task', JSON.stringify(todoArray))
-//     CheckitemsLeft(todoArray)
-// }
-
-
-// clearCompleted.addEventListener('click', filterCompleted)
-
-// btnActive.addEventListener('click', filterCompleted)
-
-// btnCompleted.addEventListener('click', showCompleted)
-
-// function filterCompleted() {
-//     console.log(todoArray)
-//     todoArray = todoArray.filter((task) => task.isCompleted === false)
-//     localStorage.setItem('task', JSON.stringify(todoArray))
-//     console.log(todoArray)
-//     document.querySelector('.completed').remove()
-// }
-
-
-// function showCompleted() {
-//     console.log(todoArray)
-//     todoArray = todoArray.filter((task) => task.isCompleted === true)
-//     localStorage.setItem('task', JSON.stringify(todoArray))
-//     console.log(todoArray)
-//     document.querySelector('li').remove()
-// }
-// loop thrpugh array 
-// remove the one that has task.is complted set to true
-// update local storage
-// remove from page
-
-// addEvent listener to the button 
-// then loop through and filter out the once that has their property task.isCompleted set to true
-// remove it from local storage
-// then remove it from the page
 
 
 
-
-// tp switch to dark mode do this
-// give the body a class of body_dark
-// add class of bg-image_dark to  header
-// add clas of container_dark to div class of container

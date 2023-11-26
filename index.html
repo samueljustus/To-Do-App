@@ -7,15 +7,15 @@
     <title>To Do App</title>
 </head>
 <body>
-   <header class="bg-image">   
+    <header class="bg-image">
         <div class="header">
             <h1 class="hero">todo</h1>
             <button class="theme-switcher">
                 <img src="img/icon-moon.svg" alt="an half moon icon" class="moon-img">
             </button>
         </div>
-   </header> 
-   <div class="container">
+    </header> 
+ <div class="container">
     <form class="form" action="#">
         <span class="circle"></span>
         <label for="create-todo"></label>
@@ -31,16 +31,17 @@
             <img src="img/icon-cross.svg" alt="" class="cross">
         </li> -->
     </ul>
-    <div class="item-clear">
-        <p class="items-left"><span class="number"></span> items left</p>
-        <button href="#" class="clear">Clear Completed</button>
-    </div>
     <div class="modifier">
-        <div class="show">
-            <button href="#" id="all" class="btn btn_blue">All</button>
-            <button href="#" id="active" class="btn">Active</button>
-            <button href="#" id="completed" class="btn">Completed</button>
+        <div class="item-clear">
+            <p class="items-left"><span class="number"></span> items left</p>
+            <div class="show">
+                <button href="#" id="all" class="btn btn_blue">All</button>
+                <button href="#" id="active" class="btn">Active</button>
+                <button href="#" id="completed" class="btn">Completed</button>
+            </div>
+            <button href="#" class="clear">Clear Completed</button>
         </div>
+        
     </div>
     <footer>
         <p class="drag">Drag and drop to reorder list</p>
