@@ -218,8 +218,34 @@ globalButton.forEach((btn) => {
    }
 
 })
+
+
+    allTaskEl.forEach((item) => {
+        item.addEventListener('dragstart', () => {
+            setTimeout(() => item.classList.add('dragging'), 0)
+        })
+
+        item.addEventListener('dragend', () => item.classList.remove('dragging'))
+    })
+
+
+
+    function initSortableList(e) {
+        e.preventDefault()
+        const draggingItem = document.querySelector('.dragging')
+        let siblings = [...todoContainer.querySelectorAll('.todo-item:not(.draggging)')]
+        let nextSibling = siblings.find()
+    }
         
      
+
+// /*
+// first set dragable to true in the li element
+// get the ul of the element youwant to sort with querySelector
+// then query the lis you want to sort
+//add eventlistner called dragstart to ach item
+// then when you listen for dragstart then settimeout of 0 sec and add a class of dragging to item
+// then listen for dragend and remove the class
 
 
 
