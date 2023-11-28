@@ -219,24 +219,43 @@ globalButton.forEach((btn) => {
 
 })
 
+// let drag = loacalStorage.getItem('drag')
 
-    allTaskEl.forEach((item) => {
-        item.addEventListener('dragstart', () => {
-            setTimeout(() => item.classList.add('dragging'), 0)
-        })
-
-        item.addEventListener('dragend', () => item.classList.remove('dragging'))
+   let sorted =  new Sortable(todoContainer, {
+        animation: 300,
+        sort: true
     })
 
 
 
-    function initSortableList(e) {
-        e.preventDefault()
-        const draggingItem = document.querySelector('.dragging')
-        let siblings = [...todoContainer.querySelectorAll('.todo-item:not(.draggging)')]
-        let nextSibling = siblings.find()
-    }
-        
+
+
+
+
+    // allTaskEl.forEach((item) => {
+    //     item.addEventListener('dragstart', () => {
+    //         setTimeout(() => item.classList.add('dragging'), 0)
+    //     })
+
+    //     item.addEventListener('dragend', () => item.classList.remove('dragging'))
+    // })
+
+
+
+    // function initSortableList(e) {
+    //     e.preventDefault()
+    //     const draggingItem = document.querySelector('.dragging')
+    //     console.log(draggingItem)
+    //     let siblings = [...todoContainer.querySelectorAll('.todo-item:not(.draggging)')]
+    //     let nextSibling = siblings.find((sibling) => {
+    //         return e.clientY <= sibling.offsetTop + sibling.offsetHeight / 2
+    //     })
+    //     todoContainer.insertBefore(draggingItem, nextSibling)
+    // }
+
+    // todoContainer.addEventListener('dragover', initSortableList)
+    // todoContainer.addEventListener('dragenter', e => e.preventDefault())
+    
      
 
 // /*

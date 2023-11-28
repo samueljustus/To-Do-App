@@ -112,6 +112,7 @@ input[placeholder] {
 }
 
 
+
 .check-container .check-box {
     transform: scale(1.7); 
     opacity: 0; 
@@ -152,7 +153,8 @@ input[placeholder] {
 .item-clear {
     padding: 1em 1em;
     margin-bottom: 1rem;
-    display: grid;
+    display: flex;
+    justify-content: space-between;
     background-color: #ffff;
 }
 
@@ -295,9 +297,9 @@ footer {
     
     }
 
-    .item-clear {
+    /* .item-clear {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    }
+    } */
 }

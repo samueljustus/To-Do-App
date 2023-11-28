@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jsDelivr :: Sortable :: Latest (https://www.jsdelivr.com/package/npm/sortablejs) -->
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
     <link rel="stylesheet" href="styles.css">
     <title>To Do App</title>
 </head>
@@ -31,17 +33,16 @@
             <img src="img/icon-cross.svg" alt="" class="cross">
         </li> -->
     </ul>
+    <div class="item-clear">
+        <p class="items-left"><span class="number"></span> items left</p>
+        <button href="#" class="clear">Clear Completed</button>
+    </div>
     <div class="modifier">
-        <div class="item-clear">
-            <p class="items-left"><span class="number"></span> items left</p>
-            <div class="show">
-                <button href="#" id="all" class="btn btn_blue">All</button>
-                <button href="#" id="active" class="btn">Active</button>
-                <button href="#" id="completed" class="btn">Completed</button>
-            </div>
-            <button href="#" class="clear">Clear Completed</button>
+        <div class="show">
+            <button href="#" id="all" class="btn btn_blue">All</button>
+            <button href="#" id="active" class="btn">Active</button>
+            <button href="#" id="completed" class="btn">Completed</button>
         </div>
-        
     </div>
     <footer>
         <p class="drag">Drag and drop to reorder list</p>
