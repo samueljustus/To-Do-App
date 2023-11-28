@@ -24,8 +24,8 @@ Users should be able to:
 
 - ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Add solution URL here]([https://your-solution-url.com](https://github.com/samueljustus/To-Do-App))
+- Live Site URL: [Add live site URL here]([https://your-live-site-url.com](https://samueljustus.github.io/To-Do-App/))
   
 ## My process
 i started off by creating the skeleton with my html then i dynamically created the element with javqascript and append them on the page
